@@ -17,7 +17,7 @@ def before_request():
         content_type = request.content_type or ''
         service_uuid = request.headers.get('X-Service-UUID')
 
-        # Ustal dopasowany szablon endpointu
+        # Dopasowanie szblonu do endpointu
         template_path = match_endpoint_from_db(app, request.path, request.method, service_uuid) or request.path
 
         if 'application/json' in content_type and request.get_data():
