@@ -12,10 +12,9 @@ def hash_value(value, encryption_key, data_category):
     
     if not encryption_key:
         return "HASH_KEY_MISSING"
-    salt = encryption_key[:16].encode()  # sól: pierwsze 16 znaków klucza
-    hashed = pbkdf2_hmac('sha256', value.encode(), salt, 100000)
-    return hashed.hex()
 
+    hashed = pbkdf2_hmac('sha256', value.encode(), encryption_key.encode(), 100000)
+    return hashed.hex()
 
 def encrypt_value(value, encryption_key, data_category):
 
